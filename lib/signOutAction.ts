@@ -3,5 +3,5 @@
 import { signOut } from "@/auth";
 
 export async function signOutAction() {
-  await signOut(); // safe on server, can use headers()
+  await signOut();
 }

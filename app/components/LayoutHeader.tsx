@@ -9,7 +9,7 @@ export async function LayoutHeader() {
     <div className="flex items-center justify-between text-[#00003c] bg-[#54f4d0] p-4">
       <div className="flex items-center gap-2">
         <FilmIcon width={25} height={25} />
-        <span className="w-full">Cinema Guru</span>
+        <span className="w-full text-2xl font-bold">Cinema Guru</span>
       </div>
       <SignOutButton session={session} />
     </div>
