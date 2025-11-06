@@ -105,7 +105,7 @@ export default function TitlesList() {
               <span
                 key={genre}
                 onClick={() => toggleGenre(genre)}
-                className={`border rounded-2xl border-[#54f4d0] p-1 ${genres.includes(genre) ? "bg-[#54f4d0] text-[#000061]" : ""}`}>{genre}</span>
+                className={`border rounded-2xl border-[#54f4d0] p-1 cursor-pointer ${genres.includes(genre) ? "bg-[#54f4d0] text-[#000061]" : ""}`}>{genre}</span>
             ))}
           </div>
         </div>

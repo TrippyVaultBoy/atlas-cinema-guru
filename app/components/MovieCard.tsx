@@ -88,8 +88,8 @@ function MovieCard({ movie }: Props) {
     return (
         <div key={movie.id} className="relative group overflow-hidden rounded-2xl border border-[#54f4d0]">
             <div className="absolute top-2 right-2 flex gap-2 translate-x-16 group-hover:translate-x-0 transition-transform duration-500 ease-in-out">
-                {favorited ? <StarSolid onClick={() => toggleFavorite(movie)} width={25} height={25}/> : <StarOutline onClick={() => toggleFavorite(movie)} width={25} height={25}/>}
-                {watchLater ? <ClockSolid onClick={() => toggleWatchLater(movie)} width={25} height={25}/> : <ClockOutline onClick={() => toggleWatchLater(movie)} width={25} height={25}/>}
+                {favorited ? <StarSolid onClick={() => toggleFavorite(movie)} width={25} height={25} className="cursor-pointer"/> : <StarOutline onClick={() => toggleFavorite(movie)} width={25} height={25} className="cursor-pointer"/>}
+                {watchLater ? <ClockSolid onClick={() => toggleWatchLater(movie)} width={25} height={25} className="cursor-pointer"/> : <ClockOutline onClick={() => toggleWatchLater(movie)} width={25} height={25} className="cursor-pointer"/>}
             </div>
             <img src={movie.image} alt={movie.title} className="rounded-2xl" />
             <div className="absolute bottom-0 left-0 w-full
