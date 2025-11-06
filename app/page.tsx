@@ -70,7 +70,7 @@ export default function TitlesList() {
               value={query}
               onChange={(e) => setQuery(e.target.value)}
               placeholder="Search Movies..."
-              className="rounded-2xl bg-[#000061] border-2 border-[#54f4d0] p-1"
+              className="rounded-2xl bg-[#000061] border border-[#54f4d0] p-1"
             />
           </div>
           <div className="flex gap-2">
@@ -81,7 +81,7 @@ export default function TitlesList() {
                 value={minYear}
                 onChange={(e) => setMinYear(e.target.value)}
                 placeholder="1990"
-                className="rounded-2xl bg-[#000061] border-2 border-[#54f4d0] p-1"
+                className="rounded-2xl bg-[#000061] border border-[#54f4d0] p-1"
               />
             </div>
             <div className="flex flex-col">
@@ -91,7 +91,7 @@ export default function TitlesList() {
                 value={maxYear}
                 onChange={(e) => setMaxYear(e.target.value)}
                 placeholder="2025"
-                className="rounded-2xl bg-[#000061] border-2 border-[#54f4d0] p-1"
+                className="rounded-2xl bg-[#000061] border border-[#54f4d0] p-1"
               />
             </div>
           </div>
@@ -105,7 +105,7 @@ export default function TitlesList() {
               <span
                 key={genre}
                 onClick={() => toggleGenre(genre)}
-                className={`border-2 rounded-2xl border-[#54f4d0] p-1 ${genres.includes(genre) ? "bg-[#54f4d0] text-[#000061]" : ""}`}>{genre}</span>
+                className={`border rounded-2xl border-[#54f4d0] p-1 ${genres.includes(genre) ? "bg-[#54f4d0] text-[#000061]" : ""}`}>{genre}</span>
             ))}
           </div>
         </div>

@@ -3,7 +3,7 @@ import { NextRequest, NextResponse } from "next/server";
 import { auth } from "@/auth";
 
 /**
- * GET /api/titles
+ * GET /api/watch-later
  */
 export const GET = auth(async (req: NextRequest) => {
   const params = req.nextUrl.searchParams;

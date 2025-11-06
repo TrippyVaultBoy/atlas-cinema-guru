@@ -1,12 +1,96 @@
 import { Title } from "@/lib/definitions";
 
+import { StarIcon as StarSolid, ClockIcon as ClockSolid } from "@heroicons/react/24/solid";
+import { StarIcon as StarOutline, ClockIcon as ClockOutline } from "@heroicons/react/24/outline";
+import { useEffect, useState } from "react";
+
 type Props = {
     movie: Title;
 };
 
 function MovieCard({ movie }: Props) {
+    const [favorited, setFavorited] = useState(false);
+    const [watchLater, setWatchLater] = useState(false);
+
+    async function checkFavorite(movie: Title) {
+        const res = await fetch("/api/favorites");
+
+        if (res.ok) {
+            const data = await res.json();
+            const movieIdToCheck = movie.id;
+            const isFavorited = data.favorites.some((movie: Title) => movie.id === movieIdToCheck);
+
+            setFavorited(isFavorited);
+        } else if (res.status === 401) {
+            console.error("");
+        } else {
+            console.error("");
+        }
+    }
+   
+    async function checkWatchLater(movie: Title) {
+        const res = await fetch("/api/watch-later");
+
+        if (res.ok) {
+            const data = await res.json();
+            const movieIdToCheck = movie.id;
+            const isWatchLater = data.watchLater.some((movie: Title) => movie.id === movieIdToCheck);
+
+            setWatchLater(watchLater);
+        } else if (res.status === 401) {
+            console.error("");
+        } else {
+            console.error("");
+        }
+    }
+
+    async function toggleFavorite(movie: Title) {
+        try {
+            const res = await fetch(`/api/favorites/${movie.id}`, {
+                method: favorited ? "DELETE" : "POST",
+            });
+
+            if (res.ok) {
+               setFavorited(!favorited); 
+            } else if (res.status === 401) {
+                console.error("Not logged in");
+            } else {
+                console.error("Failed to update favorite");
+            }
+        } catch (err) {
+            console.error("Error toggling favorite:", err);
+        }
+    }
+
+    async function toggleWatchLater(movie: Title) {
+        try {
+            const res = await fetch(`/api/watch-later/${movie.id}`, {
+                method: watchLater ? "DELETE" : "POST",
+            });
+
+            if (res.ok) {
+                setWatchLater(!watchLater);
+            } else if (res.status === 401) {
+                console.error("Not logged in");
+            } else {
+                console.error("Failed to update favorite");
+            }
+        } catch (err) {
+            console.error("Error toggling favorite:", err);
+        }
+    }
+    
+    useEffect(() => {
+        checkFavorite(movie);
+        checkWatchLater(movie);
+    }, [movie]);
+    
     return (
         <div key={movie.id} className="relative group overflow-hidden rounded-2xl border border-[#54f4d0]">
+            <div className="absolute top-2 right-2 flex gap-2 translate-x-16 group-hover:translate-x-0 transition-transform duration-500 ease-in-out">
+                {favorited ? <StarSolid onClick={() => toggleFavorite(movie)} width={25} height={25}/> : <StarOutline onClick={() => toggleFavorite(movie)} width={25} height={25}/>}
+                {watchLater ? <ClockSolid onClick={() => toggleWatchLater(movie)} width={25} height={25}/> : <ClockOutline onClick={() => toggleWatchLater(movie)} width={25} height={25}/>}
+            </div>
             <img src={movie.image} alt={movie.title} className="rounded-2xl" />
             <div className="absolute bottom-0 left-0 w-full
                             flex flex-col justify-between
