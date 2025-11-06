@@ -14,7 +14,7 @@ function LayoutSidebar() {
             onMouseEnter={open}
             onMouseLeave={close}
             onFocus={open}
-            className={`h-screen bg-[#1dd2af] transition-all duration-300 ease-in-out 
+            className={`bg-[#1dd2af] transition-all duration-300 ease-in-out 
                   ${expanded ? "w-96" : "w-24"} flex flex-col p-4`}
         >
             <div className="flex flex-col bg-[#1dd2af] p-4 gap-4">

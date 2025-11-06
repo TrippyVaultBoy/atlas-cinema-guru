@@ -59,11 +59,11 @@ export default function TitlesList() {
     <div className="flex flex-col">
 
       {/* Search Filters */}
-      <div className="flex justify-between p-8">
+      <div className="flex justify-between px-8 pt-8">
         {/* Text Inputs */}
         <div className="w-96">
-          <div className="flex flex-col">
-            <span>Search</span>
+          <div className="flex flex-col mb-2">
+            <span className="font-bold">Search</span>
             <input
               type="text"
               value={query}
@@ -74,7 +74,7 @@ export default function TitlesList() {
           </div>
           <div className="flex gap-2">
             <div className="flex flex-col">
-              <span>Min Year</span>
+              <span className="font-bold">Min Year</span>
               <input
                 type="text"
                 value={minYear}
@@ -84,7 +84,7 @@ export default function TitlesList() {
               />
             </div>
             <div className="flex flex-col">
-              <span>Max Year</span>
+              <span className="font-bold">Max Year</span>
               <input
                 type="text"
                 value={maxYear}
@@ -99,7 +99,7 @@ export default function TitlesList() {
         {/* Genres Tags */}
         <div className="flex flex-col">
           <span className="font-bold">Genres</span>
-          <div className="flex flex-wrap w-96 gap-2">
+          <div className="flex flex-wrap my-auto w-96 gap-2">
             {genreList.map((genre) => (
               <span
                 key={genre}
@@ -118,11 +118,24 @@ export default function TitlesList() {
           </div>
         ))}
       </div>
-
-      <button onClick={() => setPage((prev) => prev - 1)} disabled={page === 1}>
-        Previous
-      </button>
-      <button onClick={() => setPage((prev) => prev + 1)}>Next</button>
+      
+      <div className="flex justify-center mb-8">
+        <button 
+          onClick={() => setPage((prev) => prev - 1)} disabled={page === 1}
+          className="w-32 border-2 rounded-s-4xl bg-[#54f4d0] text-[#000061] p-4"
+        >
+          Previous
+        </button>
+        <span className="bg-[#54f4d0] text-[#000061] p-4">
+          {page}
+        </span>
+        <button
+          onClick={(() => setPage((prev) => prev + 1))}
+          className=" w-32 border-2 rounded-e-4xl bg-[#54f4d0] text-[#000061] p-4"
+        >
+          Next
+        </button>
+      </div>
     </div>
   );
 }

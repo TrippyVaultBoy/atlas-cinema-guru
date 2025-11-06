@@ -14,9 +14,9 @@ type Props = {
 export default function RootLayout({ children }: Props) {
   return (
     <html lang="en">
-      <body className={`h-full w-full antialiased  bg-[#00003c] text-white`}>
+      <body className={`flex flex-col min-h-screen w-full antialiased  bg-[#00003c] text-white`}>
         <LayoutHeader/>
-        <div className="flex h-full w-full">
+        <div className="flex flex-1 items-stretch w-full">
           <LayoutSidebar/>
           {children}
         </div>
