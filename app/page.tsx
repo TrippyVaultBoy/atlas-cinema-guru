@@ -2,6 +2,7 @@
 import { useEffect, useState } from "react";
 
 import { Title } from "@/lib/definitions";
+import MovieCard from "./components/MovieCard";
 
 export default function TitlesList() {
   const [genres, setGenres] = useState<string[]>([]);
@@ -113,12 +114,11 @@ export default function TitlesList() {
       {/* Film Cards */}
       <div className="grid grid-cols-3 gap-16 p-8">
         {titles.map((title) => (
-          <div key={title.id} className="">
-            <img src={title.image} alt={title.title} className="rounded-2xl"/>
-          </div>
+          <MovieCard key={title.id} movie={title}/>
         ))}
       </div>
       
+      {/* Page Buttons */}
       <div className="flex justify-center mb-8">
         <button 
           onClick={() => setPage((prev) => prev - 1)} disabled={page === 1}
