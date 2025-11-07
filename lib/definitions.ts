@@ -34,3 +34,10 @@ export type UsersTitle = Title & {
   favorited: boolean;
   watchLater: boolean;
 };
+
+export type Activity = {
+  id: string;
+  timestamp: Date;
+  activity: string;
+  title: string;
+}
